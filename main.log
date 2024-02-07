@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.10)  7 FEB 2024 01:12
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.10)  7 FEB 2024 01:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2161,15 +2161,17 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
  (./chapter/chapter1.tex
 Chapter 1.
-) [1
+File: image/sigmoid.png Graphic file (type bmp)
+<image/sigmoid.png>
+[1
 
 
-]
+]) [2]
 \openout2 = `chapter/chapter2.aux'.
 
  (./chapter/chapter2.tex
 Chapter 2.
-) [2
+) [3
 
 
 
@@ -2179,7 +2181,7 @@ Chapter 2.
 
  (./appendix/appendix1.tex
 Appendix A.
-) [3
+) [4
 
 
 
@@ -2189,12 +2191,12 @@ Appendix A.
 
  (./appendix/appendix2.tex
 Appendix B.
-) [4
+) [5
 
 
 
 
-] [5
+] [6
 
 
 
@@ -2208,12 +2210,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 60494 strings out of 476826
- 1294240 string characters out of 5802357
- 2352663 words of memory out of 5000000
- 81507 multiletter control sequences out of 15000+600000
- 562395 words of font info for 94 fonts, out of 8000000 for 9000
+ 60545 strings out of 476826
+ 1295271 string characters out of 5802357
+ 2357250 words of memory out of 5000000
+ 81551 multiletter control sequences out of 15000+600000
+ 562419 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 131i,5n,135p,1680b,5183s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 131i,10n,135p,1680b,5183s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (14 pages, 57788 bytes).
+Output written on main.xdv (15 pages, 75740 bytes).

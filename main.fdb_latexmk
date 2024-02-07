@@ -1,19 +1,19 @@
 # Fdb version 4
-["biber main"] 1707304034 "main.bcf" "main.bbl" "main" 1707304373 0
-  "main.bcf" 1707304372 132926 b74cc2071a99600241daf4c7856bbc12 "xelatex"
+["biber main"] 1707304034 "main.bcf" "main.bbl" "main" 1707305851 0
+  "main.bcf" 1707305849 133118 e90a2e7b03cc4ea33936b6f658177db2 "xelatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["xdvipdfmx"] 1707304372 "main.xdv" "main.pdf" "main" 1707304373 0
-  "main.xdv" 1707304372 57788 1c93756cb7899cfa4239991e78c2df15 "xelatex"
+["xdvipdfmx"] 1707305850 "main.xdv" "main.pdf" "main" 1707305851 0
+  "main.xdv" 1707305849 75740 f97a5bc7989ed76fe4b23177a1258b83 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1707304370 "c:/Users/fzenk/Documents/github/templates/dissertation-template-latex/main.tex" "main.xdv" "main" 1707304373 0
-  "appendix/appendix1.aux" 1707304372 5198 3ddb0fc159ed6cb30dc2b79abe6fd622 "xelatex"
+["xelatex"] 1707305847 "c:/Users/fzenk/Documents/github/templates/dissertation-template-latex/main.tex" "main.xdv" "main" 1707305851 0
+  "appendix/appendix1.aux" 1707305849 5198 0468f6055b95797748c6823ce6a1f562 "xelatex"
   "appendix/appendix1.tex" 1707304321 89 b267b67bba39ec4e8a46e8ddfe642ad1 ""
-  "appendix/appendix2.aux" 1707304372 5109 20e53637c910c24c0f70a07c600a4274 "xelatex"
+  "appendix/appendix2.aux" 1707305849 5109 bc5af406d7ca4809fc185323b7708e51 "xelatex"
   "appendix/appendix2.tex" 1707304338 47 a4b292ad7f646e3d268acd81564bba1a ""
   "c:/Users/fzenk/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1702260924 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/Users/fzenk/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1702260925 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -308,17 +308,18 @@
   "c:/Users/fzenk/AppData/Roaming/TinyTeX/texmf-var/web2c/xetex/xelatex.fmt" 1702260936 9059356 89379c7170cb590b17d898d614a00de0 ""
   "c:/Users/fzenk/AppData/Roaming/TinyTeX/texmf.cnf" 1702260987 956 3c30d803d50a80731379075439bae0c7 ""
   "c:/Users/fzenk/Documents/github/templates/dissertation-template-latex/main.tex" 1707304031 6638 87260a738f675c671805f8bb358b27a5 ""
-  "chapter/chapter1.aux" 1707304372 5192 b7de7a85000629854daaa343a1a7213c "xelatex"
-  "chapter/chapter1.tex" 1707304352 103 d1edf84e5f26c788ee19966b24989a13 ""
-  "chapter/chapter2.aux" 1707304372 5105 1fc99957db27dcb6419ee8f96153bb3a "xelatex"
+  "chapter/chapter1.aux" 1707305849 6485 e0fee6223cbdc9f4b39f05332867025c "xelatex"
+  "chapter/chapter1.tex" 1707305844 2510 539c80480adf5134cdd61663f2afaaa0 ""
+  "chapter/chapter2.aux" 1707305849 5105 be2b59177e50a9bedb155c1e7ee9ff25 "xelatex"
   "chapter/chapter2.tex" 1707304365 46 510b06830ad973ec8ebd6a44460a4761 ""
-  "main.aux" 1707304372 1578 488d97078cac17d525a95d9693cee02b "xelatex"
+  "image/sigmoid.png" 1705370734 127186 5b2ca5edb38f53db5ceef697c192c11d ""
+  "main.aux" 1707305849 1879 b2e6d74b3a24c339cc3211ca5c3ce35e "xelatex"
   "main.bbl" 1707304036 3747 7693f4d9aef66f7fc5c12436ddf2909a "biber main"
-  "main.lof" 1707304372 97 f55435676b5898c10412dcf17cccd5a5 "xelatex"
-  "main.lot" 1707304372 97 f55435676b5898c10412dcf17cccd5a5 "xelatex"
-  "main.run.xml" 1707304372 2462 3759e4387622e92917e6e9db70435138 "xelatex"
+  "main.lof" 1707305849 243 dd54bf8927c3467bcb521482d67526c6 "xelatex"
+  "main.lot" 1707305849 249 9e681cc62ba0d3446c39a542d92f624c "xelatex"
+  "main.run.xml" 1707305849 2462 3759e4387622e92917e6e9db70435138 "xelatex"
   "main.tex" 1707304031 6638 87260a738f675c671805f8bb358b27a5 ""
-  "main.toc" 1707304372 830 beb497931d0f6d7b7d4ae872391268e8 "xelatex"
+  "main.toc" 1707305849 830 d791dfc48c4ac0ab7465c9ce5dfdf794 "xelatex"
   "style.sty" 1707303616 12116 d7d9da104969b3433006ac7eae88610c ""
   (generated)
   "appendix/appendix1.aux"

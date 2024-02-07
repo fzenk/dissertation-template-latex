@@ -603,6 +603,9 @@ OUTPUT chapter/chapter1.aux
 INPUT ./chapter/chapter1.tex
 INPUT ./chapter/chapter1.tex
 INPUT chapter/chapter1.tex
+INPUT ./image/sigmoid.png
+INPUT ./image/sigmoid.png
+INPUT ./image/sigmoid.png
 INPUT ./chapter/chapter2.tex
 INPUT ./chapter/chapter2.tex
 OUTPUT chapter/chapter2.aux
