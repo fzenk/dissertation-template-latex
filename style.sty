@@ -1,0 +1,396 @@
+% page setup
+\usepackage[letterpaper, margin=1in, footskip=0.5in]{geometry}
+\special{papersize=8.5in,11in}
+\usepackage{mdframed}
+%\usepackage{showframe} % show page margins
+
+% references
+\usepackage[backend=biber, style=apa]{biblatex}
+
+% fonts
+\usepackage[no-math]{fontspec} 
+\setmainfont{Times New Roman}
+\usepackage{setspace}
+\newfontfamily\ko{Dotum}
+\newfontfamily\zh{DengXian}
+\newfontfamily\sy{Segoe UI Symbol}
+\usepackage{xcolor}
+\raggedright
+\usepackage{soul}
+%\usepackage{isomath}
+\usepackage{unicode-math} % [mathrm=sym]
+%\setmathfont{TeX Gyre Termes}
+
+% prevent clash between expex and unicode-math
+\makeatletter
+\AtBeginDocument{\RenewCommandCopy{\gla}{\glw@gla}}
+\makeatother
+
+% spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% alignment
+\raggedright
+
+% linguistic examples
+\usepackage{expex}
+\lingset{
+  glhangstyle=none, 
+  belowglpreambleskip=0pt,
+  aboveglftskip=0pt, 
+  everygla={},
+  aboveexskip=5pt,
+  belowexskip=5pt,
+  exbreakpenalty=10000,
+  splitpartspenalty=500,
+  Everyex=\singlespace
+  }
+\usepackage{etoolbox}
+% enable 3-level examples
+\newlength{\subsubindent}
+\setlength{\subsubindent}{1.2em}
+\def\beginsubsub{%
+\par
+\begingroup
+\advance\leftskip by \subsubindent
+\def\b##1{\par\leavevmode\llap{\hbox to \subsubindent{##1\hfil}}\ignorespaces}}
+\def\endsubsub{\par\endgroup}
+
+% syntactic trees
+\usepackage{xytree}
+\usepackage{textcomp}
+\usepackage[linguistics]{forest}
+
+% indentation
+\usepackage{indentfirst}
+\setlength{\parindent}{2.6em}
+
+% hyperlinks
+\usepackage[hidelinks]{hyperref}
+
+% captions
+\usepackage[captionskip=0pt]{floatrow}
+\floatsetup[figure]{capposition=top}
+\floatsetup[table]{capposition=top}
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+\usepackage[singlelinecheck=false, labelfont=bf, labelsep=newline, textfont=normalfont, justification=raggedright, skip=0pt, hypcap=false]{caption}
+
+% figures 
+\usepackage{graphicx}
+\setkeys{Gin}{width=0.95\textwidth,keepaspectratio}
+\makeatletter
+\newcommand{\shorteq}{%
+  \settowidth{\@tempdima}{-}% Width of hyphen
+  \resizebox{\@tempdima}{\height}{=}%
+}
+\makeatother
+
+% tabularray
+\usepackage{tabularray}
+% begin giving tabularray fromatting from caption package (see https://tex.stackexchange.com/questions/628900/how-to-auto-copy-the-formatting-from-usepackagecaption-to-the-caption-of-tabu/628973#628973)
+\ExplSyntaxOn
+\prg_generate_conditional_variant:Nnn \tl_if_empty:n { e } { TF }
+\let \IfTokenListEmpty = \tl_if_empty:eTF
+\ExplSyntaxOff
+% modifying the captions of tabularray
+\DefTblrTemplate{firsthead}{default}{%
+  \addtocounter{table}{-1}%
+  \IfTokenListEmpty{\InsertTblrText{entry}}{%
+    \captionof{table}{\InsertTblrText{caption}}%
+  }{%
+    \captionof{table}[\InsertTblrText{entry}]{\InsertTblrText{caption}}%
+  }%
+}
+\DefTblrTemplate{middlehead,lasthead}{default}{%
+  \addtocounter{table}{-1}%
+  \captionof{table}[]{\InsertTblrText{caption}(Continued)}%
+}
+\SetTblrTemplate{caption-lot}{empty}
+% finish giving tabularray fromatting from caption package
+
+% additional tabularray settings
+\DefTblrTemplate{caption}{default}{\raggedright\bfseries\UseTblrTemplate{caption-tag}{default}\\\vspace{-3pt}\normalfont\UseTblrTemplate{caption-text}{default}}
+\DefTblrTemplate{middlehead,lasthead}{default}{\UseTblrTemplate{caption-tag}{default} -- continued from previous page} 
+\DefTblrTemplate{contfoot}{default}{\vspace{-3pt}\hfill\UseTblrTemplate{contfoot-text}{default}} 
+\SetTblrOuter[tblr,longtblr]{headsep=2pt} 
+\SetTblrInner[tblr,longtblr]{width=\linewidth,stretch=0,rowhead=1, leftsep=3pt, rightsep=3pt} 
+\UseTblrLibrary{booktabs} 
+\DefTblrTemplate{lastfoot}{default}{\vspace{-18pt}\singlespacing\UseTblrTemplate{note}{default}\UseTblrTemplate{remark}{default}}
+\DefTblrTemplate{remark}{default}{\MapTblrRemarks{\noindent\UseTblrTemplate{remark-tag}{default}\UseTblrTemplate{remark-sep}{default}\UseTblrTemplate{remark-text}{default}\par}}
+\DefTblrTemplate{remark-sep}{default}{.~}
+
+% other table packages
+\usepackage{tabularx}
+\setlength\tabcolsep{3pt} % cell padding
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{footnote}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{Z}{>{\centering\arraybackslash}X}
+\usepackage{tabu}
+
+% database management
+\usepackage{csvsimple}
+\usepackage{ifthen} % required for filtering in csvsimple
+\usepackage{datatool}
+
+% block quotes
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\par\singlespacing}
+
+% reformat chapter headings
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \centering \normalfont \singlespacing
+    \ifnum \c@secnumdepth >\m@ne
+        \normalsize \bfseries \MakeUppercase \@chapapp\space \MakeUppercase{\thechapter}
+        \par\nobreak
+        \vskip 5\p@
+    \fi
+    \interlinepenalty\@M
+    \normalsize \bfseries \MakeUppercase{#1}\par\nobreak
+    \vskip 10\p@
+  }}
+\def\@makeschapterhead#1{
+  {\parindent \z@ \centering
+    \normalfont
+    \interlinepenalty\@M
+    \normalsize \bfseries \MakeUppercase{#1}\par\nobreak
+    \vskip 10\p@
+  }}
+\makeatother
+
+% reformat section headings
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{0.5\baselineskip}{0.2\baselineskip}{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}{0.5\baselineskip}{0.2\baselineskip}{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0pt}{0.5\baselineskip}{0.2\baselineskip}{\normalfont\normalsize\bfseries}}
+\makeatother
+
+% reformat table of contents, list of tables, and list of figures
+\usepackage{titletoc}
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{0in}
+\setlength{\cftbeforepartskip}{1.0em plus 0.3em minus 0.1em} % prevent page break between part title and first chapter in the toc
+\setlength{\cftbeforechapskip}{1.0em plus 0.3em minus 0.1em}  % prevent page break between chapter title and first section in the toc
+\renewcommand{\cfttoctitlefont}{\normalfont\MakeUppercase\raggedright}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftpartfont}{\bfseries\normalsize}
+\renewcommand{\cftpartpagefont}{\bfseries\normalsize}
+\renewcommand{\cftfigfont}{\raggedright}
+\renewcommand{\cfttabfont}{\raggedright}
+\cftsetindents{figure}{0em}{2.5em}
+\cftsetindents{table}{0em}{2.5em}
+
+% prevent hyphenation in lists of tables and figures
+\makeatletter
+\renewcommand{\@tocrmarg}{2.55em plus1fil}
+\makeatother
+
+% include part titles in the toc but hide them in the body
+%\renewcommand{\part}[1]{\addcontentsline{toc}{part}{#1}}
+
+% headings
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+{\normalfont\centering}
+{\bfseries\MakeUppercase{\chaptertitlename}\ \MakeUppercase{\thechapter}}
+{-2pt}
+{\normalsize\bfseries\MakeUppercase}
+
+\titlespacing*{\chapter}{0pt}{-25pt}{12pt}
+
+\titleformat{\section}
+{\normalfont\normalsize\bfseries}
+{\thesection}
+{1em}
+{}
+
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}
+{\thesubsection}
+{1em}
+{}
+
+% misc
+\usepackage[normalem]{ulem}
+\usepackage{contour}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{pdfpages}
+
+% combine subfiles into thesis
+\usepackage{subfiles}
+
+% define commands for adding colored boxes around text
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, bending, positioning, shapes.geometric, tikzmark, fit, decorations.text}
+\usepackage{adjustbox}
+\newcommand{\add}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 2pt,
+      text depth = depth("Cap") + 1pt,
+      text height = height("Cap") + 1pt,
+      fill=green!20!white,
+      draw=green!80!black,
+      solid,
+      line width=0.6pt,
+      sharp corners,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+\newcommand{\remove}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 2pt,
+      text depth = depth("Cap") + 1pt,
+      text height = height("Cap") + 1pt,
+      fill=red!20!white,
+      draw=red,
+      dashed,
+      line width=0.6pt,
+      sharp corners,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+\newcommand{\change}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 1.5pt,
+      text depth = depth("Cap") + 1pt,
+      text height = height("Cap") + 1pt,
+      fill=black!5!white,
+      draw=black,
+      solid,
+      line width=0.6pt,
+      sharp corners,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+\newcommand{\grayed}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 1.5pt,
+      text depth = depth("Cap") + 1pt,
+      text height = height("Cap") + 1pt,
+      fill=black!8!white,
+      solid,
+      line width=0.6pt,
+      sharp corners,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+\newcommand{\boxing}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 1.5pt,
+      text depth = depth("Cap") + 1pt,
+      text height = height("Cap") + 1pt,
+      fill=white,
+      draw=black,
+      solid,
+      line width=0.6pt,
+      sharp corners,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+\newcommand{\gap}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 2pt,
+      text depth = depth("Cap") + 1pt,
+      text height = height("Cap") + 1pt,
+      draw=black,
+      solid,
+      text width=5em,
+      align = center,
+      line width=0.6pt,
+      sharp corners,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+\newcommand{\emptybox}[2][]{%
+  \begin{tikzpicture}[baseline = (text.base)]%
+    \node[%
+      inner sep = 1pt,
+      text depth = depth("Cap") + 0pt,
+      text height = height("Cap") + 1pt,
+      draw=black,
+      solid,
+      text width=0.8em,
+      align = center,
+      line width=0.6pt,
+  #1] (text) {#2};
+  \end{tikzpicture}%
+}%
+%arrows
+\usetikzlibrary{arrows.meta,
+                calc,
+                positioning,
+                fit,
+                quotes,
+                tikzmark}
+\tikzset{arrow/.style = {% TikzMark
+    overlay, remember picture,
+    shorten >= 1pt, shorten <= 1pt,
+    node distance = 7mm and 5mm,
+    every node/.style = {inner sep=2pt, font=\small\sffamily},
+    every edge/.style = {draw=black, line width=0.5pt, -{Straight Barb[scale=0.5]}},
+    every edge quotes/.append style = {anchor=center}
+        }}
+% arrows
+\usetikzlibrary{arrows.meta}
+\newcommand\tikznode[3][]%
+{\tikz[remember picture,baseline=(#2.base)]
+    \node[minimum size=0pt,inner sep=0pt,#1](#2){#3};%
+}
+% custom math arrows
+\newcommand{\Arrow}[1]{%
+\parbox{#1}{\tikz{\draw[|->](0,0)--(#1,0);}}
+}
+\newcommand{\trans}{%
+\parbox{.35cm}{\centering\tikz{\draw[|->](0,0)--(.2cm,0);}}
+}
+\newcommand{\onto}{%
+\parbox{.35cm}{\centering\tikz{\draw[->](0,0)--(.2cm,0);}}
+}
+\newcommand{\into}{%
+\parbox{.3cm}{\tikz{\draw(0,0)node[scale=.7]{$\!\in$}(0,0);}}
+}
+\newcommand{\equals}{%
+\parbox{.35cm}{\centering\tikz{\draw[-](0,0)--(.2cm,0);}}
+}
+% add cross node to tikz
+\tikzset{cross/.style={cross out, draw=black, fill=none, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}, cross/.default={2pt}}
+
+% manage bookmarks
+\usepackage{bookmark}
+
+% define commands to insert icons
+\newcommand{\manicle}{\includegraphics[height=10pt]{../image/manicule.png}}
+\newcommand{\warning}{\includegraphics[height=10pt]{../image/warning.png}}
+
+% format underlining
+\renewcommand{\ULdepth}{2.4pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{\uline{\contour{white}{#1}}}
+
+% customize \cite command to include ampersand
+\makeatletter
+\renewrobustcmd*{\cite}{%
+\@ifstar
+{\AtNextCite{\AtEachCitekey{\defcounter{maxnames}{999}}}%
+\nptextcite}
+{\nptextcite}}
+\makeatother
+
+% manage numbered lists
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate]{before=\csname par\endcsname\raggedright,leftmargin=*,topsep=0pt,itemsep=0ex,partopsep=0ex,parsep=0ex}
